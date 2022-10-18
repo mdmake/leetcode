@@ -58,6 +58,12 @@ class Solution:
 
         return result
 
+    def printNode(self, node):
+        cn = node
+        while cn:
+            print(cn.val)
+            cn = cn.next
+
 
 if __name__ == '__main__':
     list1 = ListNode(1, ListNode(2, ListNode(4)))
@@ -66,5 +72,4 @@ if __name__ == '__main__':
     t = Solution()
 
     rez = t.mergeTwoLists(list1, list2)
-
-    a = 2
+    t.printNode(rez)
