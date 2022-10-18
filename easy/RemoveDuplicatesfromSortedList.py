@@ -1,5 +1,7 @@
 """
-https://leetcode.com/problems/remove-duplicates-from-sorted-list/
+link: https://leetcode.com/problems/remove-duplicates-from-sorted-list/
+
+solution: https://en.wikipedia.org/wiki/Cycle_detection#Tortoise_and_hare
 """
 
 from typing import Optional
@@ -12,21 +14,19 @@ class ListNode:
 
 
 class Solution:
-    def deleteDuplicates(self, head: Optional[ListNode]) -> Optional[ListNode]:
+    def hasCycle(self, head: Optional[ListNode]) -> bool:
 
-        if not head:
-            return None
+        tortoise = head
+        hare = head
 
-        result = ListNode(head.val)
-        current = head.next
-        rez_head = result
+        while tortoise:
+            try:
+                tortoise = tortoise.next
+                hare = hare.next.next
 
-        while current:
-            if current.val != result.val:
-                result.next = current
-                result = result.next
+                if tortoise == hare:
+                    return True
+            except:
+                return False
 
-            current = current.next
-        result.next = None
-
-        return rez_head
+        return False
