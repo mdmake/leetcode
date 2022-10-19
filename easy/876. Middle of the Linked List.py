@@ -29,3 +29,26 @@ class Solution:
             current = current.next
 
         return current
+
+    def middleNode_2(self, head: Optional[ListNode]) -> Optional[ListNode]:
+
+        slow = fast = head
+
+        if not slow.next:
+            return head
+
+        try:
+            while fast:
+                fast = fast.next.next
+                slow = slow.next
+        except:
+            return slow
+
+        return slow
+
+
+    def middleNode_3(self, head):
+        slow, fast = head, head
+        while fast and fast.next:
+            slow, fast = slow.next, fast.next.next
+        return slow
