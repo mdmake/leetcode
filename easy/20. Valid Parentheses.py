@@ -8,15 +8,9 @@ class Solution:
         stack = deque()
 
         for bracket in s:
-            try:
-                if bracket not in data.keys():
-                    stack.append(bracket)
-                elif stack.pop() != data[bracket]:
-                    return False
-            except:
+            if bracket not in data.keys():
+                stack.append(bracket)
+            elif len(stack) == 0 or stack.pop() != data[bracket]:
                 return False
 
-        if len(stack) > 0:
-            return False
-
-        return True
+        return len(stack) == 0
