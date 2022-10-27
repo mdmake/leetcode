@@ -1,6 +1,7 @@
 # Definition for singly-linked list.
 """
 https://leetcode.com/problems/intersection-of-two-linked-lists/
+https://www.youtube.com/watch?v=8rccK-8gJDo
 """
 from typing import Optional
 
@@ -18,28 +19,11 @@ class Solution:
         heada = headA
         headb = headB
 
-        ha = []
-        while heada:
-            ha.append(heada)
-            heada = heada.next
+        while heada != headb:
+            heada = heada.next if (heada is not None) else headB
+            headb = headb.next if (headb is not None) else headA
 
-        hb = []
-        while headb:
-            hb.append(headb)
-            headb = headb.next
-
-        i = len(ha) - 1
-        j = len(hb) - 1
-
-        while i >= 0 and j >= 0:
-
-            if ha[i] != hb[j]:
-                return None if (i + 1 >= len(ha) or j + 1 >= len(hb)) else ha[i + 1]
-
-            i = i - 1
-            j = j - 1
-
-        return ha[i + 1]
+        return heada
 
 
 if __name__ == '__main__':
@@ -52,4 +36,3 @@ if __name__ == '__main__':
     c = Solution()
     rez = c.getIntersectionNode(nodeA, nodeB)
     print(rez.val)
-
