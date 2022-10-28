@@ -8,7 +8,29 @@ from typing import List
 
 
 class Solution:
+
     def trap(self, height: List[int]) -> int:
+
+        if not height:
+            return 0
+
+        l, r = 0, len(height) - 1
+        rez = 0
+        leftMax, rightMax = height[l], height[r]
+
+        while l < r:
+            if leftMax < rightMax:
+                l += 1
+                leftMax = max(leftMax, height[l])
+                rez += leftMax - height[l]
+            else:
+                r -= 1
+                rightMax = max(rightMax, height[r])
+                rez += rightMax - height[r]
+
+        return rez
+
+    def trap_1(self, height: List[int]) -> int:
 
         maxLeft = [0, ]
         maxRight = [0, ]
@@ -33,3 +55,6 @@ class Solution:
             volume += max(d - h, 0)
 
         return volume
+
+
+
