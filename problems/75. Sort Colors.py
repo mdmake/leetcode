@@ -2,6 +2,8 @@
 https://leetcode.com/problems/sort-colors/
 
 https://en.wikipedia.org/wiki/Dutch_national_flag_problem
+
+https://users.monash.edu/~lloyd/tildeAlgDS/Sort/Flag/
 """
 
 from typing import List
